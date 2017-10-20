@@ -7,6 +7,12 @@
 <script>
 export default {
   name: 'EachWeatherComponent',
+  props: {
+    forecast: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
 

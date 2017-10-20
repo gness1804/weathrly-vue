@@ -20,16 +20,18 @@
       <button v-on:click="setCityMode">City and State</button>
       <button v-on:click="setZipMode">Zip</button>
     </div>
-    <div class="weather-container">
+    <div class="weather-container" v-if="weather.length > 0">
       <each-weather-component
-        v-if="weather.length > 0"
+        v-for="forecast of weather"
+        v-bind:key="forecast.id"
+        v-bind:forecast="forecast"
       >
       </each-weather-component>
-      <no-weather-component
-        v-else
-      >
-      </no-weather-component>
     </div>
+    <no-weather-component
+      v-else
+    >
+    </no-weather-component>
   </div>
 </template>
 
