@@ -14,6 +14,7 @@
       >
       </ZipInput>
     </div>
+    <button v-on:click="getWeather">Get Weather!</button>
     <div class="mode-selection-container">
       <p>Please choose a mode:</p>
       <button v-on:click="setCityMode">City and State</button>
@@ -25,6 +26,7 @@
 <script>
 import CityStateInput from './CityStateInput';
 import ZipInput from './ZipInput';
+import zipIsValid from '../helpers/zipIsValid';
 
 export default {
   name: 'Landing',
@@ -36,12 +38,19 @@ export default {
     return {
       msg: 'Please select a location.',
       mode: 'cityState',
-      city: '',
-      state: '',
-      zip: '',
+      city: 'Austin',
+      state: 'TX',
+      zip: '78757',
     };
   },
   methods: {
+    getWeather: function () {
+      const { city, state, zip } = this;
+      if ((!city || !state) || !zipIsValid(zip)) {
+        alert('Error: you are missing necessary data. Please check your input and try again.');
+        // return;
+      }
+    },
     setCity: function (city) {
       this.city = city;
     },
@@ -52,7 +61,7 @@ export default {
       this.state = state;
     },
     setZip: function (zip) {
-      this.zip = zip;
+      this.zip = zip.toString();
     },
     setZipMode: function () {
       this.mode = 'zip';
