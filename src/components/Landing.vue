@@ -20,6 +20,16 @@
       <button v-on:click="setCityMode">City and State</button>
       <button v-on:click="setZipMode">Zip</button>
     </div>
+    <div class="weather-container">
+      <each-weather-component
+        v-if="weather.length > 0"
+      >
+      </each-weather-component>
+      <no-weather-component
+        v-else
+      >
+      </no-weather-component>
+    </div>
   </div>
 </template>
 
@@ -27,6 +37,8 @@
 import axios from 'axios';
 import CityStateInput from './CityStateInput';
 import ZipInput from './ZipInput';
+import EachWeatherComponent from './EachWeatherComponent';
+import NoWeatherComponent from './NoWeatherComponent';
 import zipIsValid from '../helpers/zipIsValid';
 
 export default {
@@ -34,6 +46,8 @@ export default {
   components: {
     CityStateInput,
     ZipInput,
+    EachWeatherComponent,
+    NoWeatherComponent,
   },
   data() {
     return {
