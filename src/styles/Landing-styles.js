@@ -33,6 +33,12 @@ const styles = {
     color: commonStyles.button.color,
     padding: commonStyles.button.padding,
   },
+  weatherContainer: {
+    border: '2px solid #000000',
+    borderRadius: '5px',
+    margin: '30px auto',
+    maxWidth: '80vw',
+  },
 };
 
 export default styles;

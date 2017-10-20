@@ -53,7 +53,11 @@
       Zip
       </button>
     </div>
-    <div class="weather-container" v-if="weather.length > 0">
+    <div
+      class="weather-container"
+      v-if="weather.length > 0"
+      v-bind:style="weatherContainer"
+      >
       <each-weather-component
         v-for="forecast of weather"
         v-bind:key="forecast.id"
@@ -100,6 +104,7 @@ export default {
       h3: styles.h3,
       setCityModeButton: styles.setCityModeButton,
       setZipModeButton: styles.setZipModeButton,
+      weatherContainer: styles.weatherContainer,
     };
   },
   methods: {
