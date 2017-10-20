@@ -2,7 +2,11 @@
   <div class="landing">
     <h2>{{ msg }}</h2>
     <div class="input-container">
-      <CityStateInput v-if="mode === 'cityState'"></CityStateInput>
+      <CityStateInput
+        v-if="mode === 'cityState'"
+        v-on:setCity="setCity"
+      >
+      </CityStateInput>
       <ZipInput v-if="mode === 'zip'"></ZipInput>
     </div>
     <div class="mode-selection-container">
@@ -27,9 +31,15 @@ export default {
     return {
       msg: 'Please select a location.',
       mode: 'cityState',
+      city: '',
+      state: '',
+      zip: '',
     };
   },
   methods: {
+    setCity: function (city) {
+      this.city = city;
+    },
     setCityMode: function () {
       this.mode = 'cityState';
     },
