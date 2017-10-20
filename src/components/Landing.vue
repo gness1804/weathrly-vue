@@ -29,7 +29,13 @@
       >
       </ZipInput>
     </div>
-    <button v-on:click="getWeather">Get Weather!</button>
+    <button
+      v-on:click="getWeather"
+      v-bind:style="getWeatherButton"
+      class="get-weather-button"
+    >
+    Get Weather!
+    </button>
     <div class="mode-selection-container">
       <p>Please choose a mode:</p>
       <button v-on:click="setCityMode">City and State</button>
@@ -78,6 +84,7 @@ export default {
       h2: styles.h2,
       link: 'https://www.wunderground.com/',
       logo: styles.logo,
+      getWeatherButton: styles.getWeatherButton,
     };
   },
   methods: {
@@ -121,5 +128,9 @@ export default {
 </script>
 
 <style scoped>
-
+  .get-weather-button:hover {
+    background-color:#8787ea !important;
+    border-color: #8787ea !important;
+    cursor: pointer;
+  }
 </style>

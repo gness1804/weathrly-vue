@@ -1,18 +1,23 @@
 <template>
   <div class="city-state-input">
-    <input
-      type="text"
-      v-model="city"
-      v-on:change="onCityChange"
-      placeholder="Enter City"
-    />
-    <img
-      src="../assets/cancel-circle.png"
-      alt="Clear text"
-      v-on:click="clearCity"
-      v-bind:style="cancelIcon"
-      title="Clear city"
-    />
+    <div
+      class="city-input"
+      v-bind:style="cityInput"
+    >
+      <input
+        type="text"
+        v-model="city"
+        v-on:change="onCityChange"
+        placeholder="Enter City"
+      />
+      <img
+        src="../assets/cancel-circle.png"
+        alt="Clear text"
+        v-on:click="clearCity"
+        v-bind:style="cancelIcon"
+        title="Clear city"
+      />
+    </div>
     <p>Select A State:</p>
     <select v-model="state" v-on:change="onStateChange">
       <option value="AL">Alabama</option>
@@ -81,6 +86,7 @@ export default {
       city: 'Austin',
       state: 'TX',
       cancelIcon: styles.cancelIcon,
+      cityInput: styles.cityInput,
     };
   },
   methods: {
