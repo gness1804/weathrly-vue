@@ -6,6 +6,8 @@
         v-if="mode === 'cityState'"
         v-on:setCity="setCity"
         v-on:setState="setState"
+        v-bind:city="city"
+        v-bind:state="state"
       >
       </CityStateInput>
       <ZipInput

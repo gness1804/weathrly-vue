@@ -6,6 +6,12 @@
       v-on:change="onCityChange"
       placeholder="Enter City"
     />
+    <img
+      src="../assets/cancel-circle.png"
+      alt="Clear text"
+      v-on:click="clearCity"
+      v-bind:style="cancelIcon"
+    />
     <p>Select A State:</p>
     <select v-model="state" v-on:change="onStateChange">
       <option value="AL">Alabama</option>
@@ -64,15 +70,22 @@
 </template>
 
 <script>
+import styles from '../styles/CityStateInput-styles';
+
 export default {
+
   name: 'CityStateInput',
   data() {
     return {
       city: 'Austin',
       state: 'TX',
+      cancelIcon: styles.cancelIcon,
     };
   },
   methods: {
+    clearCity: function () {
+      this.city = '';
+    },
     onCityChange: function () {
       this.$emit('setCity', this.city);
     },
