@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import CityStateInput from './CityStateInput';
 import ZipInput from './ZipInput';
 import zipIsValid from '../helpers/zipIsValid';
@@ -36,6 +37,7 @@ export default {
   },
   data() {
     return {
+      weather: [],
       msg: 'Please select a location.',
       mode: 'cityState',
       city: 'Austin',
@@ -48,8 +50,15 @@ export default {
       const { city, state, zip } = this;
       if ((!city || !state) || !zipIsValid(zip)) {
         alert('Error: you are missing necessary data. Please check your input and try again.');
-        // return;
+        return;
       }
+      axios.get(`https://api.wunderground.com/api/47fe8304fc0c9639/forecast/q/${state}/${city.toUpperCase()}.json`)
+        .then((data) => {
+          if (data && data.data && data.data.forecast && typeof data.data.forecast !== 'undefined') {
+            this.weather = data.data.forecast.txt_forecast.forecastday;
+          }
+        })
+        .catch((err) => { throw new Error(err); });
     },
     setCity: function (city) {
       this.city = city;
