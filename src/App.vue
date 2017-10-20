@@ -17,7 +17,12 @@ export default {
 </script>
 
 <style>
+html {
+  background-color:#efc5b1;
+}
+
 #app {
   text-align: center;
+  font-family: 'Oswald', sans-serif;
 }
 </style>

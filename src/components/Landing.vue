@@ -1,6 +1,19 @@
 <template>
   <div class="landing">
-    <h2>{{ msg }}</h2>
+    <p>Data courtesy of:</p>
+    <a
+      v-bind:href="link"
+      target="_blank"
+      noopener
+      noreferrer
+    >
+      <img
+        src="../assets/logo.jpg"
+        alt="Weather Underground logo"
+        v-bind:style="logo"
+      />
+    </a>
+    <h2 v-bind:style="h2">{{ msg }}</h2>
     <div class="input-container">
       <CityStateInput
         v-if="mode === 'cityState'"
@@ -44,6 +57,7 @@ import ZipInput from './ZipInput';
 import EachWeatherComponent from './EachWeatherComponent';
 import NoWeatherComponent from './NoWeatherComponent';
 import zipIsValid from '../helpers/zipIsValid';
+import styles from '../styles/Landing-styles';
 
 export default {
   name: 'Landing',
@@ -61,6 +75,9 @@ export default {
       city: 'Austin',
       state: 'TX',
       zip: '78757',
+      h2: styles.h2,
+      link: 'https://www.wunderground.com/',
+      logo: styles.logo,
     };
   },
   methods: {
