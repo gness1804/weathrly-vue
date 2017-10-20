@@ -11,6 +11,7 @@
       alt="Clear text"
       v-on:click="clearCity"
       v-bind:style="cancelIcon"
+      title="Clear city"
     />
     <p>Select A State:</p>
     <select v-model="state" v-on:change="onStateChange">

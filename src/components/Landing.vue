@@ -6,12 +6,11 @@
         v-if="mode === 'cityState'"
         v-on:setCity="setCity"
         v-on:setState="setState"
-        v-bind:city="city"
-        v-bind:state="state"
       >
       </CityStateInput>
       <ZipInput
         v-if="mode === 'zip'"
+        v-on:setZip="setZip"
       >
       </ZipInput>
     </div>
@@ -51,6 +50,9 @@ export default {
     },
     setState: function (state) {
       this.state = state;
+    },
+    setZip: function (zip) {
+      this.zip = zip;
     },
     setZipMode: function () {
       this.mode = 'zip';
