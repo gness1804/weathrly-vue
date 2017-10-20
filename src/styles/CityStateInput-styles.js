@@ -1,12 +1,14 @@
+import commonStyles from './CommonStyles';
+
 const styles = {
   cancelIcon: {
-    cursor: 'pointer',
-    marginLeft: '10px',
+    cursor: commonStyles.cancelIcon.cursor,
+    marginLeft: commonStyles.cancelIcon.marginLeft,
   },
   cityInput: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
+    alignItems: commonStyles.inputWrapper.alignItems,
+    display: commonStyles.inputWrapper.display,
+    justifyContent: commonStyles.inputWrapper.justifyContent,
   },
 };
 

@@ -1,5 +1,8 @@
 <template>
-  <div class="zip-input">
+  <div
+    class="zip-input"
+    v-bind:style="zipInput"
+  >
     <input
       type="number"
       v-model="zip"
@@ -25,6 +28,7 @@ export default {
     return {
       zip: 78757,
       cancelIcon: styles.cancelIcon,
+      zipInput: styles.zipInput,
     };
   },
   methods: {

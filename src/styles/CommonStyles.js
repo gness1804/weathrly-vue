@@ -6,6 +6,15 @@ const commonStyles = {
     color: '#ffffff',
     padding: '5px',
   },
+  cancelIcon: {
+    cursor: 'pointer',
+    marginLeft: '10px',
+  },
+  inputWrapper: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+  },
 };
 
 export default commonStyles;
