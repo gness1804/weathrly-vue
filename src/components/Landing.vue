@@ -37,9 +37,21 @@
     Get Weather!
     </button>
     <div class="mode-selection-container">
-      <p>Please choose a mode:</p>
-      <button v-on:click="setCityMode">City and State</button>
-      <button v-on:click="setZipMode">Zip</button>
+      <h3 v-bind:style="h3">Please choose a mode:</h3>
+      <button
+        v-on:click="setCityMode"
+        v-bind:style="setCityModeButton"
+        class="set-city-mode-button"
+      >
+      City and State
+      </button>
+      <button
+        v-on:click="setZipMode"
+        v-bind:style="setZipModeButton"
+        class="set-zip-mode-button"
+      >
+      Zip
+      </button>
     </div>
     <div class="weather-container" v-if="weather.length > 0">
       <each-weather-component
@@ -85,6 +97,9 @@ export default {
       link: 'https://www.wunderground.com/',
       logo: styles.logo,
       getWeatherButton: styles.getWeatherButton,
+      h3: styles.h3,
+      setCityModeButton: styles.setCityModeButton,
+      setZipModeButton: styles.setZipModeButton,
     };
   },
   methods: {
@@ -128,7 +143,9 @@ export default {
 </script>
 
 <style scoped>
-  .get-weather-button:hover {
+  .get-weather-button:hover,
+  .set-city-mode-button:hover,
+  .set-zip-mode-button:hover {
     background-color:#8787ea !important;
     border-color: #8787ea !important;
     cursor: pointer;
