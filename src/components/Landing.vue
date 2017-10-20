@@ -115,12 +115,18 @@ export default {
       this.zip = '';
     },
     getWeather: function () {
-      const { city, state, zip } = this;
+      const { city, state, zip, mode } = this;
+      let url;
       if ((!city || !state) || !zipIsValid(zip)) {
         alert('Error: you are missing necessary data. Please check your input and try again.');
         return;
       }
-      axios.get(`https://api.wunderground.com/api/47fe8304fc0c9639/forecast/q/${state}/${city.toUpperCase()}.json`)
+      if (mode === 'cityState') {
+        url = `https://api.wunderground.com/api/47fe8304fc0c9639/forecast/q/${state}/${city.toUpperCase()}.json`;
+      } else {
+        url = `https://api.wunderground.com/api/47fe8304fc0c9639/forecast/q/${zip}.json`;
+      }
+      axios.get(url)
         .then((data) => {
           if (data && data.data && data.data.forecast && typeof data.data.forecast !== 'undefined') {
             this.weather = data.data.forecast.txt_forecast.forecastday;
