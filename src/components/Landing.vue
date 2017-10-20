@@ -124,6 +124,8 @@ export default {
         .then((data) => {
           if (data && data.data && data.data.forecast && typeof data.data.forecast !== 'undefined') {
             this.weather = data.data.forecast.txt_forecast.forecastday;
+          } else {
+            alert('Oops! Location data was invalid. Please check your location input and try again.');
           }
         })
         .catch((err) => { throw new Error(err); });
