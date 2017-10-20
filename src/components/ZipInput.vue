@@ -30,6 +30,7 @@ export default {
   methods: {
     clearZip: function () {
       this.zip = null;
+      this.$emit('clearZip');
     },
     onZipChange: function () {
       this.$emit('setZip', this.zip);
