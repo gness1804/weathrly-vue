@@ -3,7 +3,7 @@
     <h2>{{ msg }}</h2>
     <div class="input-container">
       <CityStateInput v-if="mode === 'cityState'"></CityStateInput>
-      <ZipInput v-if="mode === 'zip'">I should appear only in zip mode.</ZipInput>
+      <ZipInput v-if="mode === 'zip'"></ZipInput>
     </div>
     <div class="mode-selection-container">
       <p>Please choose a mode:</p>
