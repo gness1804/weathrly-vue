@@ -16,7 +16,7 @@ const styles = {
     fontStyle: 'italic',
   },
   logo: {
-    marginBottom: '40px',
+    margin: '0 auto',
   },
   setCityModeButton: {
     backgroundColor: commonStyles.button.backgroundColor,
