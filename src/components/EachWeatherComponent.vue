@@ -1,6 +1,6 @@
 <template>
   <div class="each-weather-component">
-    <p>I am the Each Weather component.</p>
+    <h3>{{forecast.title}}</h3>
   </div>
 </template>
 

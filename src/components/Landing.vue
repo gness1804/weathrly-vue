@@ -6,11 +6,13 @@
         v-if="mode === 'cityState'"
         v-on:setCity="setCity"
         v-on:setState="setState"
+        v-on:clearCity="clearCity"
       >
       </CityStateInput>
       <ZipInput
         v-if="mode === 'zip'"
         v-on:setZip="setZip"
+        v-on:clearZip="clearZip"
       >
       </ZipInput>
     </div>
@@ -62,6 +64,12 @@ export default {
     };
   },
   methods: {
+    clearCity: function () {
+      this.city = '';
+    },
+    clearZip: function () {
+      this.zip = '';
+    },
     getWeather: function () {
       const { city, state, zip } = this;
       if ((!city || !state) || !zipIsValid(zip)) {

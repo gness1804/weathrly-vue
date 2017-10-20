@@ -86,6 +86,7 @@ export default {
   methods: {
     clearCity: function () {
       this.city = '';
+      this.$emit('clearCity');
     },
     onCityChange: function () {
       this.$emit('setCity', this.city);
