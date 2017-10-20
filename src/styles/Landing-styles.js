@@ -16,7 +16,7 @@ const styles = {
     fontStyle: 'italic',
   },
   logo: {
-    marginBottom: '40px',
+    margin: '0 auto',
   },
   setCityModeButton: {
     backgroundColor: commonStyles.button.backgroundColor,
@@ -32,6 +32,12 @@ const styles = {
     border: commonStyles.button.border,
     color: commonStyles.button.color,
     padding: commonStyles.button.padding,
+  },
+  weatherContainer: {
+    border: '2px solid #000000',
+    borderRadius: '5px',
+    margin: '30px auto',
+    maxWidth: '80vw',
   },
 };
 

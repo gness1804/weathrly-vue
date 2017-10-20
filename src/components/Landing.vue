@@ -53,7 +53,11 @@
       Zip
       </button>
     </div>
-    <div class="weather-container" v-if="weather.length > 0">
+    <div
+      class="weather-container"
+      v-if="weather.length > 0"
+      v-bind:style="weatherContainer"
+      >
       <each-weather-component
         v-for="forecast of weather"
         v-bind:key="forecast.id"
@@ -100,6 +104,7 @@ export default {
       h3: styles.h3,
       setCityModeButton: styles.setCityModeButton,
       setZipModeButton: styles.setZipModeButton,
+      weatherContainer: styles.weatherContainer,
     };
   },
   methods: {
@@ -110,15 +115,23 @@ export default {
       this.zip = '';
     },
     getWeather: function () {
-      const { city, state, zip } = this;
+      const { city, state, zip, mode } = this;
+      let url;
       if ((!city || !state) || !zipIsValid(zip)) {
         alert('Error: you are missing necessary data. Please check your input and try again.');
         return;
       }
-      axios.get(`https://api.wunderground.com/api/47fe8304fc0c9639/forecast/q/${state}/${city.toUpperCase()}.json`)
+      if (mode === 'cityState') {
+        url = `https://api.wunderground.com/api/47fe8304fc0c9639/forecast/q/${state}/${city.toUpperCase()}.json`;
+      } else {
+        url = `https://api.wunderground.com/api/47fe8304fc0c9639/forecast/q/${zip}.json`;
+      }
+      axios.get(url)
         .then((data) => {
           if (data && data.data && data.data.forecast && typeof data.data.forecast !== 'undefined') {
             this.weather = data.data.forecast.txt_forecast.forecastday;
+          } else {
+            alert('Oops! Location data was invalid. Please check your location input and try again.');
           }
         })
         .catch((err) => { throw new Error(err); });
