@@ -2,8 +2,8 @@
   <div class="landing">
     <h2>{{ msg }}</h2>
     <div class="input-container">
-      <p v-if="mode === 'cityState'">I should appear only in cityState mode.</p>
-      <p v-if="mode === 'zip'">I should appear only in zip mode.</p>
+      <CityStateInput v-if="mode === 'cityState'"></CityStateInput>
+      <ZipInput v-if="mode === 'zip'">I should appear only in zip mode.</ZipInput>
     </div>
     <div class="mode-selection-container">
       <p>Please choose a mode:</p>
@@ -14,8 +14,15 @@
 </template>
 
 <script>
+import CityStateInput from './CityStateInput';
+import ZipInput from './ZipInput';
+
 export default {
   name: 'Landing',
+  components: {
+    CityStateInput,
+    ZipInput,
+  },
   data() {
     return {
       msg: 'Please select a location.',
