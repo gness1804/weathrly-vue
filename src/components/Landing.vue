@@ -5,9 +5,13 @@
       <CityStateInput
         v-if="mode === 'cityState'"
         v-on:setCity="setCity"
+        v-on:setState="setState"
       >
       </CityStateInput>
-      <ZipInput v-if="mode === 'zip'"></ZipInput>
+      <ZipInput
+        v-if="mode === 'zip'"
+      >
+      </ZipInput>
     </div>
     <div class="mode-selection-container">
       <p>Please choose a mode:</p>
@@ -42,6 +46,9 @@ export default {
     },
     setCityMode: function () {
       this.mode = 'cityState';
+    },
+    setState: function (state) {
+      this.state = state;
     },
     setZipMode: function () {
       this.mode = 'zip';

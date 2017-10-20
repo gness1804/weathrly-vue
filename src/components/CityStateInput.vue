@@ -7,7 +7,7 @@
       placeholder="Enter City"
     />
     <p>Select A State:</p>
-    <select v-model="state">
+    <select v-model="state" v-on:change="onStateChange">
       <option value="AL">Alabama</option>
       <option value="AK">Alaska</option>
       <option value="AZ">Arizona</option>
@@ -75,6 +75,9 @@ export default {
   methods: {
     onCityChange: function () {
       this.$emit('setCity', this.city);
+    },
+    onStateChange: function () {
+      this.$emit('setState', this.state);
     },
   },
 };
